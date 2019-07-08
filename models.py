@@ -837,6 +837,8 @@ class agcData(Base):
     bgvalue = Column(Float(precision=24))
     peakvalue = Column(Float(precision=24))
     flux = Column(Float(precision=24))
+    offset_x = Column(Float(precision=24))
+    offset_y = Column(Float(precision=24))
     seeing = Column(Float(precision=24))
     transparency = Column(Float(precision=24))
     flags = Column(Integer)
@@ -845,7 +847,8 @@ class agcData(Base):
     guideStars = relation(GuideStars, backref=backref('agcData'))
 
     def __init__(self, agcId, visit, guideStarId, agcNum, datatime, centroidx, centroidy,
-                 fwhmx, fwhmy, bgvalue, peakvalue, flux, seeing, transparency, flags):
+                 fwhmx, fwhmy, bgvalue, peakvalue, flux, offset_x, offset_y,
+                 seeing, transparency, flags):
         self.agcId = agcId
         self.visit = visit
         self.guideStarId = guideStarId
@@ -858,6 +861,8 @@ class agcData(Base):
         self.bgvalue = bgvalue
         self.peakvalue = peakvalue
         self.flux = flux
+        self.offset_x = offset_x
+        self.offset_y = offset_y
         self.seeing = seeing
         self.transparency = transparency
         self.flags = flags
